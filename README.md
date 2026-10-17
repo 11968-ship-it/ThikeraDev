@@ -16,3 +16,10 @@ Contact: A way for recruiters, developers, and potential collaborators to connec
 - Showcase My Technical Skills: Build the portfolio from scratch to demonstrate my coding abilities, problem-solving approach, and attention to detail.
 - Build and Deploy Efficiently: Use GitHub Pages to publish my portfolio quickly and share my projects through a single, accessible link.
 - Keep It Simple and Transparent: Let the actual code speak for itself rather than relying on pre-built templates or website builders.
+
+
+## Quick Link
+
+```
+https://11968-ship-it.github.io/ThikeraDev/
+```
