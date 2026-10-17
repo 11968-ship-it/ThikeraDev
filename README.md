@@ -20,6 +20,6 @@ Contact: A way for recruiters, developers, and potential collaborators to connec
 
 ## Quick Link
 
-```
+
 https://11968-ship-it.github.io/ThikeraDev/
-```
+
