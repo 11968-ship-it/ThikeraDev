@@ -2,12 +2,13 @@ console.log("Script loaded successfully!");
 
 document.addEventListener("DOMContentLoaded", () => {
   // Find the toggle button and navigation links
-  const toggleButton = document.querySelector(".nav-toggle");
-  const navLinks = document.querySelector(".nav-links");
+  const toggleButton = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("dropdown-nav");
 
   // When the button is clicked, toggle the "show" class
   if (toggleButton && navLinks) {
-    toggleButton.addEventListener("click", () => {
+    toggleButton.addEventListener("click", (event) => {
+      event.preventDefault();
       navLinks.classList.toggle("show");
     });
   }
