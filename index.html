@@ -5,28 +5,32 @@
   <meta charset="UTF-8">
   <title>A Portfolio</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 
 <!-- body start here -->
 
-<body class="home" style="font-family: 'Trirong', serif;">
+<body class="home">
 
   <!-- Header with responsive navigation -->
   <header>
     <aside class="sidebar">
-      <a href="#home" class="logo">TA <span></span></a>
-      <nav class="navigation">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects and Stack</a></li>
-        <li><a class="build-tech" href="buildTech.html">Build Tech<span>↗</span></a></li>
+      <a href="#home" class="logo dropdown-toggle" id="menu-toggle">TA <span class="dot"></span></a>
+
+      <nav class="navigation dropdown-menu" id="dropdown-nav">
+        <a href="#home" class="nav-pill active">Home</a>
+        <a href="#about" class="nav-pill">About</a>
+        <a href="#projects" class="nav-pill">Stack & Projects</a>
+        <a href="#certifications" class="nav-pill">Certifications</a>
+        <a href="#buildTech" class="nav-pill">Build Tech<span>↗</span></a>
       </nav>
     </aside>
 
-    <aside class="dark-mode-toggle">
-      <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+    <!-- Dark mode toggle button -->
+
+    <aside class="theme-toggle">
+      <button id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">☼</button>
     </aside>
 
   </header>
@@ -35,22 +39,34 @@
   <!-- strcture: div => section -->
   <main>
     <div class="container">
-      <section>
+      <section class="intro" id="home">
         <!-- Main content area -->
         <div class="main-content">
           <section class="intro">
-            <h1>A Great Programmer Once Typed:</h1>
+            <h1>A Great <span class="highlight">Programmer</span> Once Typed:</h1>
 
             <div class="visual-box">
               <p id="typing-text"></p>
             </div>
 
-            <p> I code the Vision </p>
+            <p> I bring ideas to life through code, creativity, and problem-solving,
+              building digital experiences from concept to completion :) </p>
           </section>
         </div>
 
-        <section class="about">
+        <section class="about" id="about">
           <h2>About Me</h2>
+          <h4><span class="highlight">More Than Just Code!</span> Building <span class="highlight">Beyond</span> the
+            Interface</h4>
+          <p>
+            I'm a full-stack developer who enjoys bringing digital ideas to life, from crafting intuitive, responsive
+            user interfaces to developing the backend logic that powers them. Through hands-on bootcamp training and
+            project-based learning, I've been building my skills across both frontend and backend development.
+
+            I enjoy connecting design with functionality, solving problems, and creating cohesive digital experiences
+            where every component works together. For me, great development is about more than making things work — it's
+            about making them work well
+          </p>
           <ul>
             <li>Basic UML diagrams</li>
             <li>Simple examples for beginners</li>
@@ -60,32 +76,51 @@
     </div>
 
     <div class="container">
-      <section class="projects">
-        <h2>Projects and Stack</h2>
+      <section class="projects" id="projects">
+        <h2>Projects & Stack</h2>
+        <p>From <span class="highlight">concept</span> to <span class="square">code</span> — a collection of projects,
+          experiments, and technologies that shape my development journey!</p>
         <ul>
           <li>Project 1: Portfolio Website</li>
+
           <li>Project 2: E-commerce Platform</li>
           <li>Project 3: Blogging Application</li>
         </ul>
       </section>
     </div>
 
+
     <div class="container">
-      <section class="build-tech">
-        <h2>Build Tech</h2>
-        <p>Explore the latest technologies and frameworks used in modern web development.</p>
+      <section class="certifications" id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+          <li>Certification 1: Full-Stack Web Development</li>
+          <li>Certification 2: JavaScript Algorithms and Data Structures</li>
+          <li>Certification 3: Responsive Web Design</li>
+        </ul>
       </section>
+
+      <div class="container">
+        <section class="buildTtech" id="buildTech">
+          <h2>Build Tech</h2>
+          <p>Explore the latest technologies and frameworks used in modern web development.</p>
+        </section>
 
   </main>
 
   <footer>
     <section class="footer-content">
       <div>
-        <p>Find Me Here: <a href="" target="_blank"><img src="icon/github-icon-white.png" alt="GitHub"
-              style="width: 20px; vertical-align: middle;"> GitHub </a> | <a href="" target="_blank">LinkedIn</a> | <a
-            href="" target="_blank">Twitter</a> </p>
+        <p class="footer-text">
+          Find Me Here:
+          <a href="" target="_blank">
+            <img src="icon/github-icon-white.png" alt="GitHub" class="github-icon"></a>
+          <a>GitHub</a> | <a href="" target="_blank">LinkedIn</a> | <a href="" target="_blank">Twitter</a>
+        </p>
       </div>
+    </section>
 
+    <section>
       <div>
         <p>&copy; 2026 DevNext</p>
       </div>

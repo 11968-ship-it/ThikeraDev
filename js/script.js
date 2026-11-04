@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // typing effect
 
   const typingElement = document.getElementById("typing-text");
-  const text = "print('Hello, World!')";
+  const text = ">> print(\"Hello, World!\")";
   let index = 0;
 
   function typeText() {
@@ -47,6 +47,44 @@ document.addEventListener("DOMContentLoaded", () => {
     typeText();
   } else {
     console.log("ERROR: typing-text was not found!");
+  }
+
+  // Dark and Light theme toggle
+
+  const themeToggle =
+    document.getElementById("theme-toggle");
+  const root = document.documentElement;
+
+  if (themeToggle) {
+    const savedTheme = localStorage.getItem("theme");
+    const initialTheme = savedTheme === "light" ? "light" : "dark";
+
+    root.classList.remove("theme-dark", "theme-light");
+    root.classList.add(`theme-${initialTheme}`);
+
+    themeToggle.textContent = initialTheme === "dark" ? "☼" : "⏾";
+
+    themeToggle.setAttribute(
+      "aria-label",
+      initialTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+    );
+    themeToggle.addEventListener("click", () => {
+      const isDark = root.classList.contains("theme-dark");
+      const newTheme = isDark ? "light" : "dark";
+
+      root.classList.remove("theme-dark", "theme-light");
+      root.classList.add(`theme-${newTheme}`);
+
+      themeToggle.textContent = newTheme === "dark" ? "☼" : "⏾";
+
+      themeToggle.setAttribute(
+        "aria-label",
+        newTheme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+      );
+
+      localStorage.setItem("theme", newTheme);
+    });
+
   }
 
 });

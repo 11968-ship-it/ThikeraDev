@@ -3,6 +3,8 @@
    ======================== */
 
 :root {
+  color-scheme: dark;
+
   --black: #03050A;
   --navy: #0A1426;
   --navy-light: #111D33;
@@ -11,7 +13,42 @@
   --text-primary: #E5E9F0;
   --text-muted: #929BAE;
   --border: #202B3E;
+
+  --grid-color: #111D33;
 }
+
+/* Dark and light theme */
+
+:root.theme-dark {
+  color-scheme: dark;
+
+  --black: #03050A;
+  --navy: #0A1426;
+  --navy-light: #111D33;
+  --crimson: #8B0D2D;
+  --crimson-bright: #C4163A;
+  --text-primary: #E5E9F0;
+  --text-muted: #929BAE;
+  --border: #202B3E;
+
+  --grid-color: #111D33;
+}
+
+:root.theme-light {
+  color-scheme: light;
+
+  --black: #F3E7E3;
+  --navy: #E8D2CC;
+  --navy-light: #DDBBB2;
+  --crimson: #914638;
+  --crimson-bright: #A65345;
+  --text-primary: #382521;
+  --text-muted: #765B55;
+  --border: #D5B6AD;
+
+  --grid-color: #E5CEC7;
+}
+
 
 /* Global transitions */
 * {
@@ -24,11 +61,15 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Libre Baskerville', serif;
   background-color: var(--black);
+
   background-image:
-    linear-gradient(to right, #111D33 1px, transparent 1px),
-    linear-gradient(to bottom, #111D33 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color) 1px,
+      transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px,
+      transparent 1px);
+
   background-size: 120px 120px;
   background-position: 0 0;
   background-attachment: fixed;
@@ -41,7 +82,15 @@ body {
 
 /* Smooth transitions on interactive elements */
 a,
-button,
+button {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
 .project,
 .nav-link,
 .logo {
@@ -65,14 +114,13 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 2.5em;
+  font-size: 1.5em;
   color: var(--text-primary);
 }
 
 /* Legacy header navigation */
 header nav {
   background-color: var(--navy);
-  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 10px;
 }
@@ -111,33 +159,62 @@ header nav a:hover::after {
 
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 175px;
+  top: 20px;
+  left: 20px;
+  width: 250px;
   height: 100vh;
   padding: 22px 18px;
-  box-sizing: border-box;
   z-index: 1000;
-  background-color: var(--black);
-  border-right: 1px solid rgba(32, 43, 62, 0.35);
+}
+
+/* ========================
+   Collapsible Dropdown Menu
+   ======================== */
+
+/* Hide the navigation links by default */
+.sidebar .navigation {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  margin-top: 15px;
+}
+
+/* Show navigation when the toggle class is active */
+.sidebar .navigation.show {
+  display: flex;
+}
+
+.sidebar:hover .navigation {
+  display: flex;
 }
 
 /* Circular logo */
 .logo {
+  display: flex;
+  align-items: center;
   width: 78px;
-  height: 78px;
+  height: 70px;
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 5px;
   background-color: var(--navy);
   color: var(--text-primary);
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
   text-decoration: none;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.logo .dot {
+  width: 9px;
+  height: 9px;
+  background-color: var(--crimson-bright);
+  border-radius: 50%;
 }
 
 .logo:hover {
@@ -238,6 +315,7 @@ header nav a:hover::after {
   color: var(--crimson-bright);
 }
 
+/*
 .build-tech {
   border-radius: 10px;
   color: var(--text-primary);
@@ -248,8 +326,25 @@ header nav a:hover::after {
 }
 
 .build-tech:hover {
-  background-color: var(--crimson);
+  background-color: color-mix(in srgb, var(--crimson) 60%, transparent);
   color: #FFFFFF !important;
+}
+*/
+
+.highlight {
+  color: var(--crimson-bright);
+  font-weight: bold;
+}
+
+.square {
+  background-color: var(--crimson-bright);
+  color: #FFFFFF;
+  border-radius: 15px;
+  padding: 3px 7px;
+  font-weight: bold;
+  display: inline-block;
+  text-decoration-color: var(--crimson-bright);
+  text-decoration-thickness: 2px;
 }
 
 /* ========================
@@ -323,7 +418,7 @@ section h3 {
 
 p {
   color: var(--text-muted);
-  font-size: 18px;
+  font-size: 20px;
 }
 
 a {
@@ -375,7 +470,7 @@ section li {
    Aside
    ======================== */
 
-aside:not(.sidebar) {
+aside:not(.sidebar):not(.theme-toggle) {
   background-color: var(--navy);
   border: 1px solid var(--border);
   border-left: 4px solid var(--crimson);
@@ -418,7 +513,7 @@ hr {
    ======================== */
 
 .visual-box {
-  width: 250px;
+  width: 350px;
   min-height: 50px;
   background-color: var(--navy);
   border: 1px solid var(--border);
@@ -427,6 +522,10 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.visual-box+p {
+  margin-top: 40px;
 }
 
 #typing-text {
@@ -458,7 +557,7 @@ footer {
   text-align: center;
   border: 1px solid var(--border);
   border-top: 2px solid var(--crimson);
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 20px;
   margin-top: 30px;
 }
@@ -570,4 +669,74 @@ footer p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+/* ========================
+   Theme Toggle Button
+   ======================== */
+
+.theme-toggle {
+  position: fixed;
+  top: 57px;
+  right: 80px;
+  z-index: 1100;
+}
+
+#theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background-color: var(--navy);
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--navy-light);
+  border-color: var(--crimson-bright);
+  transform: rotate(12deg);
+}
+
+#theme-toggle:focus-visible {
+  outline: 2px solid var(--crimson-bright);
+  outline-offset: 4px;
+}
+
+/* Mobile positioning */
+@media (max-width: 600px) {
+  .theme-toggle {
+    top: 12px;
+    right: 14px;
+  }
+
+  #theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+#footer-text {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+/* ========================
+   GitHub Icon
+   ======================== */
+.github-icon {
+  width: 30px;
+  vertical-align: middle;
+  margin-left: 8px;
+  margin-right: 8px;
 }
